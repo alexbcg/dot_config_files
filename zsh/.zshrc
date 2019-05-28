@@ -39,3 +39,19 @@ if [ -f '/Users/admin/Downloads/.zshrc/google-cloud-sdk/path.zsh.inc' ]; then so
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/admin/Downloads/.zshrc/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/admin/Downloads/.zshrc/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Spark Path magic
+export SPARK_VERSION=`ls /usr/local/Cellar/apache-spark/ | sort | tail -1`
+export SPARK_HOME="/usr/local/Cellar/apache-spark/$SPARK_VERSION/libexec"
+export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
+
+# PySpark to ipython3 terminal
+#export PYSPARK_DRIVER_PYTHON=ipython3
+
+# Pyspark to jupyter notbebook
+#export PYSPARK_DRIVER_PYTHON=jupyter
+#export PYSPARK_DRIVER_PYTHON_OPTS=notebook
+
+# Fix java issue
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8) 
